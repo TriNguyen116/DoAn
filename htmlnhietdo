@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataWeb</title>
+</head>
+<body>
+  <label for="NhietDo">Nhiet Do:</label>
+  <span id="NhietDo"></span>
+  <br>
+  <label for="DoAm">Do Am:</label>
+  <span id="DoAm"></span>
+  <br>
+  <label for="DoAmDat">Do Am Dat:</label>
+  <span id="DoAmDat"></span>
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDesdb8XOYlChLnWYhUEBFgSsDNkMVL7lg",
+      authDomain: "data-nhietdo.firebaseapp.com",
+      databaseURL: "https://data-nhietdo-default-rtdb.firebaseio.com",
+      projectId: "data-nhietdo",
+      storageBucket: "data-nhietdo.appspot.com",
+      messagingSenderId: "672256816972",
+      appId: "1:672256816972:web:7f3036c0ffd74c20c001e9",
+      measurementId: "G-TEW27S3ME0"
+    };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    var tempDHT = document.getElementById('NhietDo');
+    var dbRef = firebase.database().ref().child('NhietDo');
+    var humDHT = document.getElementById('DoAm');
+    var dbRef3 = firebase.database().ref().child('DoAm');
+    var soilMoist = document.getElementById('DoAmDat');
+    var dbRef2 = firebase.database().ref().child('DoAmDat');
+    dbRef.on('value', snap => NhietDo.innerText = snap.val());
+    dbRef2.on('value', snap => DoAmDat.innerText = snap.val());
+    dbRef3.on('value', snap => DoAm.innerText = snap.val());
+  </script>
+</body>
+</html>
